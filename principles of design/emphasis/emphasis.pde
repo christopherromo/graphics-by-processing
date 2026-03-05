@@ -1,8 +1,8 @@
 /*
-Christopher Romo
-CS4800 (T/R)
-December 9th, 2024
-Project - Principles of Design
+emphasis.pde
+
+author: christopher romo
+created: 12/09/2024
 */
 
 void setup() {
@@ -11,41 +11,27 @@ void setup() {
   noStroke();
   fill(204);
   sphereDetail(60);
-  
-} // setup()
+} // setup
 
 void draw() {
-  // background color
   background(20,0,0);
   
-  // set the ambient lighting
+  // set ambient lighting
   ambientLight(50,0,0);
   
   // light the bottom of the spheres
   directionalLight(139, 0, 0, 0, -1, 0);
   
-  // push matrix onto the stack
+  // draw the sphere on the right
   pushMatrix();
-  
-  // translate to the right of the screen
   translate(667, height/2, 0);
-  
-  // draw sphere to the right
   sphere(33);
-  
-  // pop the matrix off of the stack
   popMatrix();
   
-  // push matrix onto the stack
+  // draw the sphere on the left
   pushMatrix();
-  
-  // translate to the left of the screen
   translate(133, height/2, 0);
-  
-  // draw sphere to the left
   sphere(33);
-  
-  // pop the matrix off of the stack
   popMatrix();
   
   // set the pointed light lighting
@@ -54,16 +40,9 @@ void draw() {
   // moving spotlight that follows the mouse
   spotLight(255, 192, 203, mouseX, mouseY, 600, 0, 0, -1, PI/2, 600);
 
-  // push matrix onto the stack
+  // draw the sphere in the middle
   pushMatrix();
-  
-  // translate to the middle of the screen
   translate(width/2, height/2, 0);
-  
-  // draw sphere in the middle
   sphere(133);
-  
-  // pop the matrix off of the stack
   popMatrix();
-  
-} // draw()
+} // draw

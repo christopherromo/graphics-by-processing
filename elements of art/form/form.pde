@@ -1,31 +1,29 @@
 /*
-Christopher Romo
-CS4800 (T/R)
-October 8th, 2024
-Project - Elements of Art
+form.pde
+
+author: christopher romo
+created: 10/08/2024
 */
+
+int cycle = 0;
+int red = 255;
+int green = 0;
+int blue = 0;
 
 void setup() {
   size(500,500,P3D);
   surface.setLocation(200, 200);
-  noStroke();
-  
-} // setup()
-
-// variables for a rainbow cube
-int red = 255;
-int green = 0;
-int blue = 0;
-int cycle = 0;
+  noStroke();  
+} // setup
 
 void draw() {
-  // uses default settings for light
+  // use default settings for light
   lights();
   
   // background color
   background(0);
   
-  // cycles through hsv values to create a rainbow effect
+  // cycle through hsv values to create a rainbow effect
   if(cycle == 0) {           // red 255, green++, blue 0
     green = green + 5;
     if(green == 255) {
@@ -56,23 +54,21 @@ void draw() {
     if(blue == 0) {
       cycle = 0;
     }
-  } // if
+  }
   
-  // centers the cube in the canvas
-  // also done by width/2, height/2
+  // center the cube in the canvas
   translate(250, 250, 0);
   
   // inverted mouseY coordinate
   int invert = width - mouseY;
   
-  // rotates the cube so that a face is always looking at mouse
+  // rotate the cube so that a face is always looking at mouse
   rotateY(map(mouseX, 0, width, 0, PI));
   rotateZ(map(invert, 0, height, 0, PI));
   
-  // changes the color of the cube
+  // change the color of the cube
   fill(red,green,blue);
   
-  // draws the cube
+  // draw the cube
   box(100);
-  
-} // draw()
+} // draw

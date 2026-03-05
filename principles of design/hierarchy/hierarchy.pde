@@ -1,9 +1,23 @@
 /*
-Christopher Romo
-CS4800 (T/R)
-December 9th, 2024
-Project - Principles of Design
+hierarchy.pde
+
+author: christopher romo
+created: 12/09/2024
 */
+
+int rotate = 360;
+
+float currentStepMercury = 0;
+float currentStepVenus = 0;
+float currentStepEarth = 0;
+float currentStepMars = 0;
+float currentStepJupiter = 0;
+
+color colorMercury = color(210,210,210);
+color colorVenus = color(210,180,140);
+color colorEarth = color(0,157,196);
+color colorMars = color(185,72,78);
+color colorJupiter = color(255,140,0);
 
 PImage img;
 
@@ -13,180 +27,52 @@ void setup() {
   noStroke();
   sphereDetail(60);
   img = loadImage("stars.jpg"); // load the original image
-  
-} // setup()
-
-int rotate = 360;
-float current_step_mercury = 0;
-float current_step_venus = 0;
-float current_step_earth = 0;
-float current_step_mars = 0;
-float current_step_jupiter = 0;
+} // setup
 
 void draw() {
-  // background color
   background(0);
   
-  image(img, 0, 0); // Displays the image from point (0,0)
+  image(img, 0, 0); // displays the image from point (0,0)
   img.loadPixels();
-
+  
   // mercury
-  
-  // push matrix onto the stack
-  pushMatrix();
-  
-  // create the pointed light
-  pointLight(200, 200, 200, width/2, height/2, 0);
-  
-  // translate to the middle of the screen
-  translate(width/2, width/2, 0);
-  
-  // rotate matrix
-  rotate(TWO_PI / rotate * current_step_mercury);
-  
-  // translate to position in solar system
-  translate(0, 100, 0);
-  
-  // fill in the sphere
-  fill(210,210,210);
-  
-  // draw sphere in the middle
-  sphere(10);
-  
-  // pop the matrix off of the stack
-  popMatrix();
-  
-  current_step_mercury += 0.5;
+  drawPlanet(currentStepMercury,100,colorMercury,10);
+  currentStepMercury += 0.5;
   
   // venus
-  
-  // push matrix onto the stack
-  pushMatrix();
-  
-  // create the pointed light
-  pointLight(200, 200, 200, width/2, height/2, 0);
-  
-  // translate to the middle of the screen
-  translate(width/2, width/2, 0);
-  
-  // rotate matrix
-  rotate(TWO_PI / rotate * current_step_venus);
-  
-  // translate to position in solar system
-  translate(0, 138, 0);
-  
-  // fill in the sphere
-  fill(210,180,140);
-  
-  // draw sphere in the middle
-  sphere(15);
-  
-  // pop the matrix off of the stack
-  popMatrix();
-  
-  current_step_venus += 0.4;
+  drawPlanet(currentStepVenus,138,colorVenus,15);
+  currentStepVenus += 0.4;
   
   // earth
-  
-  // push matrix onto the stack
-  pushMatrix();
-  
-  // create the pointed light
-  pointLight(200, 200, 200, width/2, height/2, 0);
-  
-  // translate to the middle of the screen
-  translate(width/2, width/2, 0);
-  
-  // rotate matrix
-  rotate(TWO_PI / rotate * current_step_earth);
-  
-  // translate to position in solar system
-  translate(0, 175, 0);
-  
-  // fill in the sphere
-  fill(0,157,196);
-  
-  // draw sphere in the middle
-  sphere(18);
-  
-  // pop the matrix off of the stack
-  popMatrix();
-  
-  current_step_earth += 0.3;
+  drawPlanet(currentStepEarth,175,colorEarth,18);
+  currentStepEarth += 0.3;
   
   // mars
+  drawPlanet(currentStepMars,213,colorMars,13);
+  currentStepMars += 0.2;
   
-  // push matrix onto the stack
-  pushMatrix();
-  
-  // create the pointed light
-  pointLight(200, 200, 200, width/2, height/2, 0);
-  
-  // translate to the middle of the screen
-  translate(width/2, width/2, 0);
-  
-  // rotate matrix
-  rotate(TWO_PI / rotate * current_step_mars);
-  
-  // translate to position in solar system
-  translate(0, 213, 0);
-  
-  // fill in the sphere
-  fill(185,72,78);
-  
-  // draw sphere in the middle
-  sphere(13);
-  
-  // pop the matrix off of the stack
-  popMatrix();
-  
-  current_step_mars += 0.2;
-  
-  // mars
-  
-  // push matrix onto the stack
-  pushMatrix();
-  
-  // create the pointed light
-  pointLight(200, 200, 200, width/2, height/2, 0);
-  
-  // translate to the middle of the screen
-  translate(width/2, width/2, 0);
-  
-  // rotate matrix
-  rotate(TWO_PI / rotate * current_step_jupiter);
-  
-  // translate to position in solar system
-  translate(0, 263, 0);
-  
-  // fill in the sphere
-  fill(255,140,0);
-  
-  // draw sphere in the middle
-  sphere(25);
-  
-  // pop the matrix off of the stack
-  popMatrix();
-  
-  current_step_jupiter += 0.1;
+  // jupiter
+  drawPlanet(currentStepJupiter,263,colorJupiter,25);
+  currentStepJupiter += 0.1;
   
   // sun
-  
-  // push matrix onto the stack
   pushMatrix();
-  
-  // set default lights
   lights();
-  
-  // translate to the middle of the screen
   translate(width/2, height/2, 0);
-  
   fill(255,255,0);
-  
-  // draw sphere in the middle
   sphere(50);
-  
-  // pop the matrix off of the stack
   popMatrix();
+} // draw
+
+void drawPlanet(float currentStep, int planetPos, color planetColor, int planetSize) {
+  // draws a planet
   
-} // draw()
+  pushMatrix();
+  pointLight(200, 200, 200, width/2, height/2, 0);
+  translate(width/2, width/2, 0);
+  rotate(TWO_PI / rotate * currentStep);
+  translate(0, planetPos, 0);
+  fill(planetColor);
+  sphere(planetSize);
+  popMatrix();
+}

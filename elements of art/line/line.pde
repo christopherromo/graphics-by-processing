@@ -1,8 +1,8 @@
 /*
-Christopher Romo
-CS4800 (T/R)
-October 8th, 2024
-Project - Elements of Art
+line.pde
+
+author: christopher romo
+created: 10/08/2024
 */
 
 // setup function happens only once
@@ -15,16 +15,13 @@ void setup() {
   
   // background function defines the canvas color
   background(153,255,255);
-
-} //setup()
+} //setup
 
 // draw function loops continuously
 void draw() {
   // stroke function defines the color of line
   stroke(0,51,102);
   
-  /* line function that starts at coordinates (250,250) and
-  draws lines to the coordinates of the mouse */
+  // line starts at (250,250) and ends at mouse position
   line(250,250,mouseX,mouseY);
-
-} // draw()
+} // draw

@@ -1,31 +1,26 @@
 /*
-Christopher Romo
-CS4800 (T/R)
-December 9th, 2024
-Project - Principles of Design
+balance.pde
+
+author: christopher romo
+created: 12/09/2024
 */
+
+int cycle = 0;
+int red = 255;
+int green = 0;
+int blue = 0;
 
 void setup() {
   size(500,500,P3D);
   surface.setLocation(200, 200);
   noStroke();
-  
-} // setup()
-
-// variables for a rainbow cube
-int red = 255;
-int green = 0;
-int blue = 0;
-int cycle = 0;
+} // setup
 
 void draw() {
-  // uses default settings for light
   lights();
-  
-  // background color
   background(0);
   
-  // cycles through hsv values to create a rainbow effect
+  // cycle through hsv values to create a rainbow effect
   if(cycle == 0) {           // red 255, green++, blue 0
     green = green + 5;
     if(green == 255) {
@@ -56,47 +51,28 @@ void draw() {
     if(blue == 0) {
       cycle = 0;
     }
-  } // if
+  }
   
-  // pushes default language to stack
+  // push default matrix onto the stack
   pushMatrix();
   
-  // translate to right side of screen, opposite of mouseY vertically
+  // draw the cube
   translate(400, (height-mouseY), 0);
-  
-  // inverted mouseY coordinate
   int invert = width - mouseY;
-  
-  // rotates the cube so that a face is always looking at mouse
   rotateY(map(mouseX, 0, width, 0, PI));
   rotateZ(map(invert, 0, height, 0, PI));
-  
-  // changes the color of the cube
   fill(red,green,blue);
-  
-  // draws the cube
   box(100);
   
-  // pops default matrix from stack
+  // pop default matrix from the stack
   popMatrix();
   
-  // pushes default language to stack
+  // draw the second opposing cube
   pushMatrix();
-  
-  // translate to left side of screen, follow mouseY vertically
   translate(100, mouseY, 0);
-  
-  // rotates the cube so that a face is always looking at mouse
   rotateY(map(mouseX, 0, width, 0, PI));
   rotateZ(map(invert, 0, height, 0, PI));
-  
-  // changes the color of the cube
   fill(red,green,blue);
-  
-  // draws the cube
   box(100);
-  
-  // pops default matrix from stack
   popMatrix();
-  
-} // draw()
+} // draw

@@ -1,77 +1,30 @@
 /*
-Christopher Romo
-CS4800 (T/R)
-December 9th, 2024
-Project - Principles of Design
+harmony.pde
+
+author: christopher romo
+created: 12/09/2024
 */
 
 import java.lang.*;
 import java.util.Random;
 
-void setup() {
-  size(500,500,P3D);
-  surface.setLocation(200, 200);
-  noStroke();
-  
-} // setup()
-
-void drawSphere(float x, float y, float frequency, int r, int g, int b, int gradient, int baseCase) {
-  // pushes default language to stack
-  if (baseCase <= 0) {
-    return;
-    
-  } else {
-    // pushes default language to stack
-    pushMatrix();
-  
-    // translates the sphere to correct coordinates
-    translate(x,y,0);
-  
-    // changes the color of the sphere
-    fill(r,g,b);
-  
-    // draws the sphere
-    sphere(25);
-    
-    // pops default matrix from stack
-    popMatrix();
-    
-    // uses sin function to create curve
-    x = x + sin(radians(y * frequency)) * 30;
-    
-    // recursive call depending on the gradient choice
-    if (gradient == 0) {             // color -> white
-      drawSphere(x,y+30,frequency,r+13,g+13,b+13,gradient,baseCase-1);
-      
-    } else if (gradient == 1) {      // color -> black
-      drawSphere(x,y+30,frequency,r-13,g-13,b-13,gradient,baseCase-1);
-      
-    } else if (gradient == 2) {      // color, red++
-      drawSphere(x,y+30,frequency,r+13,g,b,gradient,baseCase-1);
-      
-    } else if (gradient == 3) {      // color, green++
-      drawSphere(x,y+30,frequency,r,g+13,b,gradient,baseCase-1);
-      
-    } else {                         // color, blue++
-      drawSphere(x,y+30,frequency,r,g,b+13,gradient,baseCase-1);
-      
-    } 
-  }
-} // drawSphere()
-
-// color variables
 int red = 0;
 int green = 0;
 int blue = 0;
 
+void setup() {
+  size(500,500,P3D);
+  surface.setLocation(200, 200);
+  noStroke();  
+} // setup
+
 void draw() {
-  // uses default settings for light
   lights();  
-  
-} // draw()
+} // draw
 
 void mouseClicked() {
-  // draw background
+  // creates a spiral shape
+  
   background(0);
    
   // translate coordinate system to the point the mouse is at
@@ -91,20 +44,48 @@ void mouseClicked() {
   blue = rand.nextInt(255);
   int gradient = rand.nextInt(5);
   
-  // for loop for each spiral
+  // for loop for each arm
   for (int i = 0; i < numCurves; i++) {
-      
-    // pushes the matrix onto the stack
     pushMatrix();
       
     // rotate around the center
     rotate(TWO_PI / numCurves * i);
       
-    // call the drawSphere function for an individual spiral
-    drawSphere(0,0,randomFloat,red,green,blue,gradient,20);
-      
-    // pops the matrix off of the stack
+    // call the drawArm function for an individual arm
+    drawArm(0,0,randomFloat,red,green,blue,gradient,20);
+    
+    popMatrix();
+  }
+} // mouseClicked
+
+void drawArm(float x, float y, float frequency, int red, int green, int blue, int gradient, int baseCase) {
+  // draws an arm by using recursion
+  
+  if (baseCase <= 0) {
+    // return if all spheres in arm have been drawn
+    return;
+  } else {
+    // draw the sphere
+    pushMatrix();
+    translate(x,y,0);
+    fill(red,green,blue);
+    sphere(25);
     popMatrix();
     
+    // use sin function to create curve
+    x = x + sin(radians(y * frequency)) * 30;
+    
+    // recursive call depending on the gradient choice
+    if (gradient == 0) {             // color -> white
+      drawArm(x,y+30,frequency,red+13,green+13,blue+13,gradient,baseCase-1);
+    } else if (gradient == 1) {      // color -> black
+      drawArm(x,y+30,frequency,red-13,green-13,blue-13,gradient,baseCase-1);
+    } else if (gradient == 2) {      // color, red++
+      drawArm(x,y+30,frequency,red+13,green,blue,gradient,baseCase-1);
+    } else if (gradient == 3) {      // color, green++
+      drawArm(x,y+30,frequency,red,green+13,blue,gradient,baseCase-1);
+    } else {                         // color, blue++
+      drawArm(x,y+30,frequency,red,green,blue+13,gradient,baseCase-1);
+    } 
   }
-} // mouseClicked()
+} // drawArm
