@@ -14,7 +14,7 @@
 
 ## Features 📄
 
-   - Processing Sketches: Each sketch represents an element of art or principle of design. Other than slight polishing, these remain functionally identical to what I turned in.
+   - **Processing Sketches:** Each sketch represents an element of art or principle of design. Other than slight polishing, these remain functionally identical to what I turned in.
 
 ## Reflection 💭
 
