@@ -65,13 +65,15 @@ void draw() {
 } // draw
 
 void mousePressed() {
-  // creates a flower object
+  // creates a flower object.
   
   Flower flower = new Flower(mouseX, mouseY);
   flowers.add(flower);
 } // mousePressed
 
 public class Flower {
+  // the Flower class creates a flower object.
+
   // instance variables
   int posX;
   int posY;

@@ -65,7 +65,7 @@ void draw() {
 } // draw
 
 void drawPlanet(float currentStep, int planetPos, color planetColor, int planetSize) {
-  // draws a planet
+  // draws a planet.
   
   pushMatrix();
   pointLight(200, 200, 200, width/2, height/2, 0);

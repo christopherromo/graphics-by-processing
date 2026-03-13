@@ -79,7 +79,7 @@ void draw() {
 } // draw
 
 void drawCube(int x, int y, color theColor) {  
-  // draws a cube
+  // draws a cube.
   
   pushMatrix();
   translate(x, y, 0);
@@ -89,7 +89,7 @@ void drawCube(int x, int y, color theColor) {
 } // drawCube
 
 void drawSphere(int x, int y, color theColor) {
-  // draws a sphere using variables
+  // draws a sphere.
   
   pushMatrix();
   translate(x,y,0);

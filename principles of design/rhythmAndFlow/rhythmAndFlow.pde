@@ -49,24 +49,26 @@ void draw() {
 } // draw
 
 void drawSmallTriangle(float x, float y) {
-  // draws a small triangle
+  // draws a small triangle.
   
   triangle(x,y,x+25,y-25,x+50,y);
 } // drawSmallTriangle
 
 void drawMediumTriangle(float x, float y) {
-  // draws a medium triangle
+  // draws a medium triangle.
   
   triangle(x,y,x+50,y-50,x+100,y);
 } // drawMediumTriangle
 
 void drawLargeTriangle(float x, float y) {
-  // draws a large triangle
+  // draws a large triangle.
   
   triangle(x,y,x+75,y-75,x+150,y);
 } // drawLargeTriangle
 
 public class Wave {
+  // the Wave class creates a wave object.
+
   // instance variables
   float horizontalPos;
   float verticalPos;
@@ -105,7 +107,7 @@ public class Wave {
   }
   
   public void updateWave() {
-    // updates the wave based on current position
+    // updates the wave based on current position.
     
     horizontalPos += speed * horizontalDir;
     verticalPos += speed * verticalDir;

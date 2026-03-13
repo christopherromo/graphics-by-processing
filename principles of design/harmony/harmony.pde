@@ -23,7 +23,7 @@ void draw() {
 } // draw
 
 void mouseClicked() {
-  // creates a spiral shape
+  // creates a spiral shape.
   
   background(0);
    
@@ -59,7 +59,7 @@ void mouseClicked() {
 } // mouseClicked
 
 void drawArm(float x, float y, float frequency, int red, int green, int blue, int gradient, int baseCase) {
-  // draws an arm by using recursion
+  // draws an arm by using recursion.
   
   if (baseCase <= 0) {
     // return if all spheres in arm have been drawn

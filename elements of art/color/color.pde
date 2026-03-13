@@ -32,7 +32,7 @@ void draw() {
 } // draw
 
 void mousePressed() {
-  // resets the background
+  // resets the background.
   
   background(0);
 } // mousePressed

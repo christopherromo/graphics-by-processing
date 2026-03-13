@@ -35,3 +35,9 @@
 
 5. Click the run button in the editor to run the sketch.
     - *Most sketches feature interaction via the mouse!*
+
+## Quick Look 🎥
+
+<p align="center">
+  <img src="./resources/graphics-by-processing-quick-look.gif" alt="Graphics by Processing Quick Look"/>
+</p>

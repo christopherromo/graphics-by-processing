@@ -117,7 +117,7 @@ void draw() {
 } // draw
 
 void drawSphere(int x, int y, float red, float green, float blue) {
-  // draws a sphere
+  // draws a sphere.
   
   pushMatrix();
   translate(x, y, 0);

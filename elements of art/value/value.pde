@@ -46,7 +46,7 @@ void draw() {
 } // draw
 
 void drawScene(color skyColor, color backPyramidColor, color frontPyramidsColor, color groundColor) {
-  // draws the scene
+  // draws the scene.
   
   // draw the sky
   background(skyColor);

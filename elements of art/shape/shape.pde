@@ -34,7 +34,7 @@ void draw() {
 } // draw
 
 void mousePressed() {
-  // clears the screen and changes count
+  // clears the screen and changes count.
   
   if (count == 0) {
     background(255,204,153);

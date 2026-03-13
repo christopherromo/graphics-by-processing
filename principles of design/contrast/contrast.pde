@@ -60,7 +60,7 @@ void draw() {
 } // draw
 
 void mouseClicked() {
-  // increments cycle
+  // increments cycle.
   
   if (cycle == 7) {
     cycle = 0;
@@ -70,7 +70,7 @@ void mouseClicked() {
 } // mouseClicked
 
 void drawStar(int x, int y, int size, color starColor) {
-  // draws a rotating star
+  // draws a rotating star.
   
   // draw the first cube
   pushMatrix();
